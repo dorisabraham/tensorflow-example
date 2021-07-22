@@ -60,5 +60,9 @@
       - name: test5v2
         type: execution
         step: Train model
+      - name: test5v3
+        type: execution 
+        step: Train model
     edges:
       - [test5v1.output.dataset/preprocessed_mnist.npz,test5v2.input.preprocessed_mnist]
+      - [test5v1.output.dataset/preprocessed_mnist.npz,test5v3.input.preprocessed_mnist]

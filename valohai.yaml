@@ -50,3 +50,15 @@
     files:
       - name: model
         path: model.h5
+
+- pipeline:
+    name: Test5
+    nodes: 
+      - name: test5v1
+        type: execution 
+        step: Preprocess data
+      - name: test5v2
+        type: execution
+        step: Train model
+    edges:
+      - [test5v1.output.preprocessed_mnist.npz,test5v2.input.preprocessed_mnist]

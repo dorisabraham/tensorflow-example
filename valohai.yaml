@@ -51,7 +51,7 @@
       - name: mnistmodel
         path: model.h5
 
-        
+
 - pipeline:
     name: Test5
     nodes: 
@@ -64,6 +64,12 @@
       - name: test5v3
         type: execution 
         step: Train model
+      - name: deploy-node
+        type: deployment
+        deployment: mnist
+        endpoints:
+            - inference
     edges:
       - [test5v1.output.dataset/preprocessed_mnist.npz,test5v2.input.preprocessed_mnist]
       - [test5v1.output.dataset/preprocessed_mnist.npz,test5v3.input.preprocessed_mnist]
+      - [test5v2.output.model/model.h5,deploy-node.files.inference.model]

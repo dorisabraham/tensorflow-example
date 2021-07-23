@@ -45,12 +45,13 @@
 
 - endpoint:
     name: inference
-    image: tensorflow/tensorflow:2.4.1-gpu
+    image: tensorflow/tensorflow:2.4.1
     wsgi: deploy:predict
-    files:
-      - name: model
+    files: 
+      - name: mnistmodel
         path: model.h5
 
+        
 - pipeline:
     name: Test5
     nodes: 
